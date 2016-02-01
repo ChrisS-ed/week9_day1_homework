@@ -15,6 +15,13 @@ window.onload = function() {
 
   var button = document.getElementById('add-button');
 
+  function clearQuotes() {
+    var quotes = document.querySelector("#quotes");
+    while (quotes.hasChildNodes()) {
+      quotes.removeChild(quotes.lastChild);
+    }
+  }
+
   function displayQuotes(quoteList) {
     for (var i = 0; i < quoteList.length; i++) {
       thisText = quoteList[i].text + " ";
@@ -46,6 +53,7 @@ window.onload = function() {
     var quoteToAdd = new Quote(quoteTextFromBox, authorTextFromBox);
     quoteList.push(quoteToAdd);
     console.log(quoteList);
+    clearQuotes();
     displayQuotes(quoteList);
   }
 
