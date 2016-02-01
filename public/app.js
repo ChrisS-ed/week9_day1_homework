@@ -11,25 +11,50 @@ window.onload = function() {
   var quote4 = new Quote("Scaffold is nothing but a fiery hell. ", "Valerie");
   var quoteList = [quote1, quote2, quote3, quote4];
 
-  for (var i = 0; i < quoteList.length; i++) {
-    thisText = quoteList[i].text;
-    thisAuthor = quoteList[i].author;
+  displayQuotes(quoteList);
 
-    var quoteArticle = document.createElement("article");
-    quoteArticle.classList.add("quote");
-    
-    var blockquote = document.createElement("blockquote");
-    blockquote.innerText = thisText;
+  var button = document.getElementById('add-button');
 
-    var cite = document.createElement("cite");
-    cite.innerText = thisAuthor;
+  function displayQuotes(quoteList) {
+    for (var i = 0; i < quoteList.length; i++) {
+      thisText = quoteList[i].text;
+      thisAuthor = quoteList[i].author;
 
-    blockquote.appendChild(cite);
-    quoteArticle.appendChild(blockquote);
+      var quoteArticle = document.createElement("article");
+      quoteArticle.classList.add("quote");
+      
+      var blockquote = document.createElement("blockquote");
+      blockquote.innerText = thisText;
 
-    var quotes = document.querySelector("#quotes");
-    quotes.appendChild(quoteArticle);
-    
-  };
+      var cite = document.createElement("cite");
+      cite.innerText = thisAuthor;
+
+      blockquote.appendChild(cite);
+      quoteArticle.appendChild(blockquote);
+
+      var quotes = document.querySelector("#quotes");
+      quotes.appendChild(quoteArticle);
+    };
+  }
+  
+  var handleClick = function() {
+    console.log('Woah! I got clicked');
+    var quoteTextFromBox = document.getElementById("quote-text-input").value;
+    var authorTextFromBox = document.getElementById("quote-author-input").value;
+    console.log(quoteTextFromBox);
+    console.log(authorTextFromBox);
+    var quoteToAdd = new Quote(quoteTextFromBox, authorTextFromBox);
+    quoteList.push(quoteToAdd);
+    console.log(quoteList);
+    displayQuotes(quoteList);
+  }
+
+  var form = document.getElementById("quote-form");
+  form.onsubmit = function(event) {
+    event.preventDefault();
+    handleClick();
+  }
+
+  button.onclick = handleClick;
 
 }
