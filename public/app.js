@@ -5,10 +5,10 @@ window.onload = function() {
     this.author = author;
   }
 
-  var quote1 = new Quote("Visual Basic is the way forward, I don't know why we are doing Javascript. ", "Jay Chetty");
-  var quote2 = new Quote("The only CSS you need to know is background-color: tomato ", "Rick");
-  var quote3 = new Quote("No Blockers *smug tone* ", "Keith");
-  var quote4 = new Quote("Scaffold is nothing but a fiery hell. ", "Valerie");
+  var quote1 = new Quote("Visual Basic is the way forward, I don't know why we are doing Javascript.", "Jay Chetty");
+  var quote2 = new Quote("The only CSS you need to know is background-color: tomato", "Rick");
+  var quote3 = new Quote("No Blockers *smug tone*", "Keith");
+  var quote4 = new Quote("Scaffold is nothing but a fiery hell.", "Valerie");
   var quoteList = [quote1, quote2, quote3, quote4];
 
   displayQuotes(quoteList);
@@ -17,7 +17,7 @@ window.onload = function() {
 
   function displayQuotes(quoteList) {
     for (var i = 0; i < quoteList.length; i++) {
-      thisText = quoteList[i].text;
+      thisText = quoteList[i].text + " ";
       thisAuthor = quoteList[i].author;
 
       var quoteArticle = document.createElement("article");
